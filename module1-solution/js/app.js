@@ -7,19 +7,26 @@ angular.module('LunchCheck', [])
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
    $scope.item = "";
-   $scope.message = "";
-
    $scope.check = function() {
       var arrayOfItem = $scope.item.split(',');
       var numOfItem = arrayOfItem.length;
-      if(numOfItem == 0 || $scope.item == ""){
-         $scope.message = "Please enter data first";
+      if($scope.item == ""){
+         $scope.answer = {
+                message: "Please enter data first",
+                font: { "color":"red" },
+                box : { "border" : "solid 1px red" }};
       }
       else if (numOfItem <= 3) {
-         $scope.message = "Enjoy!";
+        $scope.answer = {
+               message: "Enjoy!",
+               font: { "color":"green" },
+               box : { "border" : "solid 1px green" }};
       }
       else{
-         $scope.message = "Too much!";
+        $scope.answer = {
+               message: "Too much!",
+               font: { "color":"green" },
+               box : { "border" : "solid 1px green" }};
       }
   };
 }
